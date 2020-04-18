@@ -1,72 +1,178 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-<form ngForm name = cadastro >
-  <div class="form-group">
+<script  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"  crossorigin="anonymous"></script>
+<script  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"  integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"  crossorigin="anonymous"></script>
+<script  src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"  integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"  crossorigin="anonymous"></script>
+
+
+
+<form class="needs-validation" #cadastramento = "ngForm" >
+  <div class="form-group col-md-6">
     <label for="exampleFormControlInput1">Nome</label>
-    <input class="form-control" type="text" placeholder="Digite seu nome" [(ngModel)] = "nome">
+    <input class="form-control" type="text" placeholder="Digite seu nome" [(ngModel)] = "nome" name = "nome" #nomeValido="ngModel"
+    required
+    [class.is-invalid]="nomeValido.invalid && (nomeValido.dirty || nomeValido.touched)">
+  <small class="form-text text-muted"
+    *ngIf="!(nomeValido.invalid && (nomeValido.dirty || nomeValido.touched))">Informe o nome completo</small>
+  <div *ngIf="nomeValido.invalid && (nomeValido.dirty || nomeValido.touched)" class="invalid-feedback">
+    <span *ngIf="nomeValido.errors.required">Você precisa informar o nome</span>
+  </div>
+</div>
+
+  <div class="form-group col-md-6">
     <label for="exampleFormControlInput1">Data de Nascimento</label>
-    <input class="form-control" type="date" placeholder="00/00/0000"[(ngModel)] = "data">
+    <input class="form-control" type="date" placeholder="00/00/0000"[(ngModel)] = "data" name = "data"
+    #dataOk="ngModel"
+    required
+    [class.is-invalid]="dataOk.invalid && (dataOk.dirty || dataOk.touched)">
+  <small class="form-text text-muted"
+    *ngIf="!(dataOk.invalid && (dataOk.dirty || dataOk.touched))">Informe sua data de nascimento</small>
+  <div *ngIf="dataOk.invalid && (dataOk.dirty || dataOk.touched)" class="invalid-feedback">
+    <span *ngIf="dataOk.errors.required">Você precisa informar sua data de nascimento</span>
   </div>
-  <div class="form-group">
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="fem" id="fem" value="f"[(ngModel)] = "sexo">
-      <label class="form-check-label" for="inlineRadio1">Feminino</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="masc" id="masc" value="m" [(ngModel)] = "sexo">
-      <label class="form-check-label" for="inlineRadio2">Masculino</label>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="radio">Sexo</label><br>
+    <input type="radio" id="Masculino" [(ngModel)]= "sexo" name="sexo" #sexoV="ngModel" value="Masculino" required
+    [class.is-invalid]="sexoV.invalid && (sexoV.dirty || sexoV.touched)">
+    <label for="Masculino" class="ml-1 mr-3">Masculino</label>
+    <input type="radio" id="Feminino" [(ngModel)]= "sexo" name="sexo" #sexoV="ngModel" value="Feminino" required
+    [class.is-invalid]="sexoV.invalid && (sexoV.dirty || sexoV.touched)">
+    <label for="Feminino" class="ml-1">  Feminino</label>
+    <small class="form-text text-muted"
+      *ngIf="!(sexoV.invalid && (sexoV.dirty || sexoV.touched))">Informe o sexo.</small>
+    <div *ngIf="sexoV.invalid && (sexoV.dirty || sexoV.touched)" class="invalid-feedback">
+      <span *ngIf="sexoV.errors.required">Você precisa informar o sexo</span>
     </div>
   </div>
-    <div class="form-group">
+    <div class="form-group col-md-6">
     <label for="exampleFormControlInput1">CPF</label>
-    <input class="form-control" type="text" placeholder="000.000.000-00"[(ngModel)] = "cpf">
+    <input class="form-control" type="text" placeholder="000.000.000-00"[(ngModel)] = "cpf" name = "cpf" #CPFV="ngModel"
+    required
+    [class.is-invalid]="CPFV.invalid && (CPFV.dirty || CPFV.touched)">
+  <small class="form-text text-muted"
+    *ngIf="!(CPFV.invalid && (CPFV.dirty || CPFV.touched))">Informe seu CPF</small>
+  <div *ngIf="CPFV.invalid && (CPFV.dirty || CPFV.touched)" class="invalid-feedback">
+    <span *ngIf="CPFV.errors.required">Você precisa informar seu CPF</span>
   </div>
-  <div class="form-group">
+  </div>
+  <div class="form-group col-md-6">
     <label for="exampleFormControlInput1">Telefone</label>
-    <input class="form-control" type="text" placeholder="(00) 0000-0000" [(ngModel)] = "telefone">
+    <input class="form-control" type="text" placeholder="(00) 0000-0000" [(ngModel)] = "telefone" name = "telefone" #telV="ngModel"
+    required
+    [class.is-invalid]="telV.invalid && (telV.dirty || telV.touched)">
+  <small class="form-text text-muted"
+    *ngIf="!(telV.invalid && (telV.dirty || telV.touched))">Informe seu telefone celular com DDD</small>
+  <div *ngIf="telV.invalid && (telV.dirty || telV.touched)" class="invalid-feedback">
+    <span *ngIf="telV.errors.required">Você precisa informar seu telefone celular</span>
+  </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group col-md-6">
     <label for="exampleFormControlInput1">Endereço de email</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" [(ngModel)] = "email" placeholder="nome@exemplo.com">
+    <input type="email" class="form-control" id="exampleFormControlInput1" [(ngModel)] = "email" placeholder="nome@exemplo.com" name= "email" #emailV="ngModel"
+    required
+    [class.is-invalid]="emailV.invalid && (emailV.dirty || emailV.touched)">
+  <small class="form-text text-muted"
+    *ngIf="!(emailV.invalid && (emailV.dirty || emailV.touched))">Informe seu email</small>
+  <div *ngIf="emailV.invalid && (emailV.dirty || emailV.touched)" class="invalid-feedback">
+    <span *ngIf="emailV.errors.required">Você precisa informar seu email</span>
   </div>
-  <div class="form-group">
+  </div>
+  <div class="form-group col-md-6">
     <label for="inputAddress2">Endereço</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartamento, hotel, casa, etc."[(ngModel)] = "endereco">
+    <textarea class="form-control" id="exampleFormControlTextarea1" maxlength = 30 rows="3" id = "end" placeholder="Apartamento, hotel, casa, etc."[(ngModel)] = "endereco" name = "endereco" #endV="ngModel"
+    required
+    [class.is-invalid]="endV.invalid && (endV.dirty || endV.touched)">
+  <small class="form-text text-muted"
+    *ngIf="!(endV.invalid && (endV.dirty || endV.touched))">Informe seu endereço completo</small>
+  <div *ngIf="endV.invalid && (endV.dirty || endV.touched)" class="invalid-feedback">
+    <span *ngIf="endV.errors.required">Você precisa informar seu endereço completo</span>
+  </div></textarea>
   </div>
-  <div class="form-row">
+  <div class="form-row col-md-6">
     <div class="form-group col-md-6">
       <label for="inputCity">Cidade</label>
-      <input type="text" class="form-control" id="inputCity" [(ngModel)] = "cidade">
+      <input type="text" class="form-control" id="inputCity" [(ngModel)] = "cidade" name = "cidade" #cidadeV="ngModel"
+      required
+      [class.is-invalid]="cidadeV.invalid && (cidadeV.dirty || cidadeV.touched)">
+    <small class="form-text text-muted"
+      *ngIf="!(cidadeV.invalid && (cidadeV.dirty || cidadeV.touched))">Informe sua cidade</small>
+    <div *ngIf="cidadeV.invalid && (cidadeV.dirty || cidadeV.touched)" class="invalid-feedback">
+      <span *ngIf="cidadeV.errors.required">Você precisa informar sua cidade</span>
+    </div>
     </div>
     <div class="form-group col-md-4">
       <label for="inputEstado">Estado</label>
-      <select id="inputEstado" class="form-control" >
+      <select id="inputEstado" class="form-control" name = "estado" [(ngModel)] = "ufSelect"   #estadoV="ngModel" required
+      [class.is-invalid]="estadoV.invalid && (estadoV.dirty || estadoV.touched)">
         <option *ngFor = "let estado of uf">{{estado}}</option>
       </select>
+      <small class="form-text text-muted"
+                  *ngIf="!(estadoV.invalid && (estadoV.dirty || estadoV.touched))">Selecione UF do seu estado.</small>
+              <div *ngIf="estadoV.invalid && (estadoV.dirty || estadoV.touched)" class="invalid-feedback">
+                <span *ngIf="estadoV.errors.required">Você precisa selecionar o UF do seu estado</span>
+              </div>
     </div>
     <div class="form-group col-md-2">
       <label for="inputCEP">CEP</label>
-      <input type="text" class="form-control" id="inputCEP" [(ngModel)] = "cep">
+      <input type="text" class="form-control" id="inputCEP" [(ngModel)] = "cep" name = "cep" #cepV="ngModel"
+      required
+      [class.is-invalid]="cepV.invalid && (cepV.dirty || cepV.touched)">
+    <small class="form-text text-muted"
+      *ngIf="!(cepV.invalid && (cepV.dirty || cepV.touched))">Informe o CEP da sua cidade</small>
+    <div *ngIf="cepV.invalid && (cepV.dirty || cepV.touched)" class="invalid-feedback">
+      <span *ngIf="cepV.errors.required">Você precisa informar o CEP da sua cidade</span>
+    </div>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group col-md-6">
     <label for="exampleFormControlSelect2">Turmas</label>
-    <select multiple class="form-control" id="turmas">
-      <option *ngFor = "let turma of turmas" value = {{turma.id}}>{{turma.nome}}</option>
-
-
-
+    <select multiple class="form-control" id="turmas" name = "turmas" [(ngModel)]="turmasSelect" #turmasV="ngModel" required
+    [class.is-invalid]="turmasV.invalid && (turmasV.dirty || turmasV.touched)" [disabled] = "documentosV.invalid">
+      <option *ngFor="let turma of turmas" [value]="turma.nome">{{turma.nome}}</option>
     </select>
+    <small class="form-text text-muted"
+    *ngIf="!(turmasV.invalid && (turmasV.dirty || turmasV.touched))">
+    Selecione as turmas.<br>Utilize CTRL para multiplas seleção.
+  </small>
   </div>
+  <br>
+  <div class="form-group col-md-6">
   <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="documentos" id="documentos"[(ngModel)] = "documentos" >
+    <input class="form-check-input" type="checkbox" value="documentos" id="documentos"[(ngModel)] = "documentos" name = "doc" #documentosV="ngModel" required
+    [class.is-invalid]="documentosV.invalid && (documentosV.dirty || documentosV.touched)">
     <label class="form-check-label" for="defaultCheck1">
       Documentos Validados na Secretaria
     </label>
   </div>
-  <button type="button" class="btn btn-lg btn-primary" disabled>Salvar</button>
-  <button type="button" class="btn btn-secondary btn-lg" disabled>Limpar</button>
+</div>
+  <br>
+  <div class="form-group col-md-6">
+  <button type="button" class="btn btn-lg btn-primary" [disabled] = "cadastramento.invalid" (click) = "cadastrar()">Cadastrar</button>
+  <button type="button" class="btn btn-secondary btn-lg" (click) = "limpaFormulario()">Limpar</button>
+</div>
+
+
 </form>
 
+<br>
+<table class="table col-md-6" >
+  <thead>
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">Idade</th>
+      <th scope="col">Sexo</th>
+      <th scope="col">Turmas</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let aluno of alunos">
+      <th scope="row">{{aluno.nome}}</th>
+      <td>{{aluno.idade}}</td>
+      <td>{{aluno.sexo}}</td>
+      <td>{{aluno.turma}}</td>
+    </tr>
 
+  </tbody>
+</table>
