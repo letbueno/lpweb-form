@@ -1,27 +1,20 @@
-# FormBootstrap
+# Formulário com Validação e Bootstrap
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3.
+O sistema consiste em um formulário de cadastro em que o usuário (aluno) deve informar os seguintes dados para realizar o cadastro de sua matrícula nos campos adequados e sinalizados pelo nome.
+- Nome
+- Data de Nascimento 
+- Sexo 
+- CPF 
+- Telefone 
+- Email
+- Endereço 
+- Cidade 
+- Estado  
+- CEP 
+- Turmas que irão se matricular 
+- Se os documentos estão ou não validados na secretaria 
 
-## Development server
+O sistema não permite que usuário possa deixar algum campo em branco ao realizar o cadastro, sendo avisado com uma mensagem de alerta em vermelho que ele deve informar aquele dado. Por conta disso, embaixo de cada campo do formulário tem instruções de como preenchê-lo.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+O aluno não pode selecionar as turmas se a opção “Documentos Validados na Secretaria” estiver desabilitado. Após habilitar a opção, as turmas podem ser selecionadas.
+Há 2 botões, que após o preenchimento do formulário corretamente, pode salvá-lo clicando em “Cadastrar” ou recomeçar o formulário clicando em “Limpar”. Logo após o cadastro do aluno, há uma tabela em que lista todos os alunos com seus seguintes dados: o nome, sua idade, sexo e turmas qual se matriculou. 
